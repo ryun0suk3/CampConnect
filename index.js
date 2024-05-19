@@ -4,11 +4,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
+mongoose.connect('mongodb://localhost:27017/camp-connect');
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
