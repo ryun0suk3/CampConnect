@@ -1,0 +1,20 @@
+<% layout('layout/boilerplate') %>
+
+<div class="row">
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <div class="d-block w-100">
+            <h1>
+        (<%=err.statusCode%>) <%=err.message%>
+
+            </h1>
+        <%=err.stack%>
+        </div>
+        <div class="d-block">
+            <a href="/campgrounds">
+                <button class="text-center btn btn-outline-dark mt-3">
+                    Home
+                </button>
+            </a>
+        </div>
+      </div>
+</div>

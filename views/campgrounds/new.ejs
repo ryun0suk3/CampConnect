@@ -3,32 +3,61 @@
     <div class="col-6 offset-3">
         <h1 class="text-center">New Campground</h1>
         <div class="form">
-            <form action="/campgrounds" method="POST">
+            <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" aria-describedby="emailHelp" name="campground[title]">
+                  <input type="text" class="form-control" id="title" aria-describedby="emailHelp" name="campground[title]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a title.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" aria-describedby="emailHelp" name="campground[location]">
+                    <input type="text" class="form-control" id="location" aria-describedby="emailHelp" name="campground[location]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid location.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Image URL</label>
-                    <input type="text" class="form-control" id="location" aria-describedby="emailHelp" name="campground[image]">
+                    <input type="text" class="form-control" id="location" aria-describedby="emailHelp" name="campground[image]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid URL.
+                    </div>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Description</span>
-                    <textarea class="form-control" name="campground[description]" aria-label="With textarea"></textarea>
+                    <textarea class="form-control" name="campground[description]" aria-label="With textarea" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid description.
+                    </div>
                 </div>                  
                 <div class="input-group my-3">
                     <label for="price" class="form-label">Campground Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
-                        <input type="text" class="form-control" id="price" aria-label="Amount (to the nearest dollar)" aria-describedby="price-label" name="campground[price]">
+                        <input type="text" class="form-control" id="price" aria-label="Amount (to the nearest dollar)" required aria-describedby="price-label" name="campground[price]">
                     </div>
-                    
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid price.
+                    </div>   
                 </div>
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="my-2 btn btn-dark">Submit</button>
               </form>
         </div>
     </div>
@@ -37,4 +66,23 @@
 <!-- <a href="/campgrounds">
     <button class="btn btn-dark">All campgrounds</button>
 </a> -->
+<script>
+    (() => {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
